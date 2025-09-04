@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\ProductRepository;
+use App\DTO\ProductListDTO;
 
 class ProductService
 {
@@ -13,8 +14,11 @@ class ProductService
         $this->productRepository = $productRepository;
     }
 
-    public function getProducts()
+    public function getProducts(ProductListDTO $dto)
     {
-        return $this->productRepository->getProducts();
+        return $this->productRepository->getProducts(
+            $dto->getPageSize(),
+            $dto->getPageIndex()
+        );
     }
 }
