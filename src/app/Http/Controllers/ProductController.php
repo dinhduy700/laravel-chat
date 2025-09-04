@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Services\ProductService;
 use App\DTO\ProductListDTO;
+use App\ViewModels\ProductViewModel;
 
 class ProductController extends Controller
 {
@@ -18,13 +19,18 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $dto = new ProductListDTO(
-            $request->input('page_size', 10),
-            $request->input('page', 1)
-        );
+        /* PASS PARAM TO SERVICE */
+        $productListDTO = new ProductListDTO();
+        $productListDTO->setPageSize($request->input('page_size', 10));
+        $productListDTO->setPageIndex($request->input('page', 1));
 
-        $products = $this->productService->getProducts($dto);
+        $products = $this->productService->getProducts($productListDTO);
 
-        return view('product.index', compact('products'));
+        /* RENDER VIEW */
+        $viewModel = new ProductViewModel();
+
+        $viewModel->setProducts($products);
+
+        return view('product.index', compact('viewModel'));
     }
 }

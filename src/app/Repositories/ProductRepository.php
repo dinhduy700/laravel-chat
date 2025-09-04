@@ -6,7 +6,7 @@ use App\Models\Product;
 
 class ProductRepository
 {
-    public function getProducts(int $pageSize, int $pageIndex)
+    public function getProducts(int $pageSize)
     {
         return Product::query()
             ->paginate($pageSize)

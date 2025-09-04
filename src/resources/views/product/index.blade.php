@@ -22,7 +22,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($products as $i => $product)
+              @foreach ($viewModel->getProducts() as $i => $product)
                 <tr>
                   <td>{{ $i + 1}}</td>
                   <td>{{ $product->name }}</td>
@@ -36,7 +36,7 @@
 
         {{-- Paging --}}
         <div class="d-flex justify-content-center">
-          {{ $products->links('pagination::bootstrap-5') }}
+          {{ $viewModel->getProducts()->links('pagination::bootstrap-5') }}
         </div>
     </div>
 
