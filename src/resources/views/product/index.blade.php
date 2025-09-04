@@ -22,11 +22,11 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($viewModel->getProducts() as $i => $product)
+              @foreach ($viewModel->getProducts() as $i => $productResponseDTO)
                 <tr>
                   <td>{{ $i + 1}}</td>
-                  <td>{{ $product->name }}</td>
-                  <td>{{ $product->price }}</td>
+                  <td>{{ $productResponseDTO->getName() }}</td>
+                  <td>{{ $productResponseDTO->getPrice() }}</td>
                 </tr>
                  
               @endforeach
@@ -35,9 +35,7 @@
           </table>
 
         {{-- Paging --}}
-        <div class="d-flex justify-content-center">
-          {{ $viewModel->getProducts()->links('pagination::bootstrap-5') }}
-        </div>
+ 
     </div>
 
     {{-- Bootstrap 5 JS CDN (kèm Popper) --}}

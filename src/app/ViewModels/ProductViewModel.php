@@ -6,14 +6,14 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProductViewModel
 {
-    private ?LengthAwarePaginator $products = null;
+    private ?array $products = null;
 
-    public function setProducts(LengthAwarePaginator $products)
+    public function setProducts(array $products)
     {
         $this->products = $products;
     }
 
-    public function getProducts(): ?LengthAwarePaginator
+    public function getProducts(): ?array
     {
         return $this->products;
     }
