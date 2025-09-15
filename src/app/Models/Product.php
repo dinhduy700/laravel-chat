@@ -4,16 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Traits\LogsActivity;
 class Product extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    use LogsActivity;
+
     protected $fillable = [
         'name',
         'price',
     ];
+    
+    protected $appends = ['name_price'];
 
+    public function getNamePriceAttribute()
+    {
+        return $this->name . ' ' . $this->price;
+    }
 }
