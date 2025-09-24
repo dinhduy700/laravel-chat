@@ -15,3 +15,8 @@ Route::get('boot-eloquent-trait', [TestController::class, 'bootEloquentTrait']);
 /* demo 03 */
 Route::get('appends', [TestController::class, 'appends']);
 
+/* demo 04 */
+Route::get('invisible-database-columns', [TestController::class, 'invisileDatabaseColumns']);
+
+/* demo 05 */
+Route::get('query-time-casting', [TestController::class, 'queryTimeCasting']);

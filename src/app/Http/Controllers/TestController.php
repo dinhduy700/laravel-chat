@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Test;
 
 class TestController extends Controller
 {
@@ -35,5 +36,22 @@ class TestController extends Controller
 
         // $json = $product->toJson();
         dd($product->toArray());
+    }
+
+    public function invisileDatabaseColumns()
+    {
+        // $test = Test::query()->first();
+        $test = Test::query()->select('password')->first();
+
+        dd($test);
+    }
+    public function queryTimeCasting()
+    {
+        $test = Test::query()
+            ->withCasts([
+                'status' => 'boolean',
+            ])
+            ->first();
+        dd($test->status);  /* ghi như vầy mới ra boolean */
     }
 }
