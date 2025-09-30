@@ -20,3 +20,8 @@ Route::get('invisible-database-columns', [TestController::class, 'invisileDataba
 
 /* demo 05 */
 Route::get('query-time-casting', [TestController::class, 'queryTimeCasting']);
+
+/* demo 06 */
+Route::get('tappable-scope', [TestController::class, 'tappableScope']);
+
+

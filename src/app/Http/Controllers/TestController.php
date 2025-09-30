@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Test;
+use App\Scopes\IsActive;
 
 class TestController extends Controller
 {
@@ -53,5 +54,14 @@ class TestController extends Controller
             ])
             ->first();
         dd($test->status);  /* ghi như vầy mới ra boolean */
+    }
+
+    public function tappableScope()
+    {
+        $result = Test::query()
+            ->tap(new IsActive)
+            ->get();
+
+        dd($result);
     }
 }
